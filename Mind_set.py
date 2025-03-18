@@ -4,16 +4,15 @@ import requests
 from dotenv import load_dotenv
 import os
 
-
-# OpenWeather API key (replace with your own API key)
+# Load environment variables
 load_dotenv()
 API_KEY = os.getenv("WEATHER_API_KEY")
-BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+BASE_URI = "http://api.openweathermap.org/data/2.5/weather"
 
 # Function to get weather data
 def get_weather(city):
     params = {"q": city, "appid": API_KEY, "units": "metric"}
-    response = requests.get(BASE_URL, params=params)
+    response = requests.get(BASE_URI, params=params)
     if response.status_code == 200:
         return response.json()
     else:
@@ -37,8 +36,7 @@ if st.button("Get Weather"):
     else:
         st.warning("Please enter a city name.")
 
-# Run the Streamlit app using UV
+# Run the Streamlit app
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8501, reload=True)
-
-
+    st.write("Running Streamlit App...")
+    # `uvicorn` is not needed for Streamlit, run it directly
