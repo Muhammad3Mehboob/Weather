@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
+API_KEY = st.secrets["weather"]["API_KEY"]
 load_dotenv()
 API_KEY = os.getenv("WEATHER_API_KEY")
 BASE_URI = "http://api.openweathermap.org/data/2.5/weather"
